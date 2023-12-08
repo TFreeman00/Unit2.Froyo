@@ -31,23 +31,34 @@ const userInputString = prompt(
   "vanilla, vanilla, vanilla, strawberry, coffee, coffee"
 );
 
+// split the input
 const flavors = (stringArray = userInputString.split(","));
 
-// for (let i = 0; i < stringArray.length; i++) {
-//   const str = stringArray[i];
-//   const flavor = parseInt(str);
-//   flavors.push(flavor);
-// }
+// initial objects
+const order = {
+  vanilla: 0,
+  strawberry: 0,
+  coffee: 0,
+};
 
-console.log(flavors);
-console.log(`You have given ${getLength(flavors)} flavors.`);
+// one way to write it
 
-// length
-function getLength(flavors) {
-  let length = 0;
-
-  for (let i = 0; i < flavors.length; i++) {
-    length++;
+for (let i = 0; i < flavors.length; i++) {
+  if (flavors[i] === "vanilla") {
+    order.vanilla++;
   }
-  return length;
+  if (flavors[i] === "strawberry") {
+    order.strawberry++;
+  }
+  if (flavors[i] === "coffee") {
+    order.coffee++;
+  }
 }
+
+// A more consice way to write the code not completely grasped i knoe we will learn this next
+// const order = flavors.reduce((acc, flavor) => {
+//   acc[flavor.trim()] = (acc[flavor.trim()] || 0) + 1;
+//   return acc;
+// }, {});
+
+console.log(order);
